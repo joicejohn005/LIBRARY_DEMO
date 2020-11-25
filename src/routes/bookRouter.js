@@ -1,5 +1,7 @@
 const express= require('express');
 const booksRouter=express.Router();
+function router(nav)
+{
 var books=[
     {
       title:'paathummayude aadu',
@@ -23,11 +25,9 @@ var books=[
   booksRouter.get('/',function(req,res){
     res.render("books",
     {
-      nav:[{link:'/books',name:"Books"},
-      {link:'/authors',name:'Author'},
-      {link:'/login',name:'Login'}], 
+      nav, 
       title:"Books",
-      head1:"Library_Authors",
+      head1:"Library_Books",
       books
     })
   })
@@ -35,12 +35,12 @@ var books=[
     const id=req.params.id;
     res.render("book",
     {
-      nav:[{link:'/books',name:"Books"},
-      {link:'/authors',name:'Author'},
-      {link:'/login',name:'Login'}],
+      nav,
       title:"Book",
       head1:"Library_Book",
       book:books[id]
     })
   })
-module.exports=booksRouter;
+  return booksRouter;
+}
+module.exports=router;

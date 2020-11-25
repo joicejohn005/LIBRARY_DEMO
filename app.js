@@ -1,19 +1,23 @@
 const express= require('express');
+
 const nav=[
   {
     link:'/books',name:'Books'
   },
   {
-    link:'/authors',name:'Authors'
-  },  
+     link:'/authors',name:'Authors'
+  },
   {
     link:'/login',name:'Login'
+  },
+  {
+    link:'/register',name:'Register'
   }
 ];
-const booksRouter=require('./src/routes/bookRouter');
-const authorsRouter=require('./src/routes/authorRouter');
-const registerRouter=require('./src/routes/register');
-const loginRouter=require('./src/routes/login');
+const booksRouter=require('./src/routes/bookRouter')(nav);
+const authorsRouter=require('./src/routes/authorRouter')(nav);
+const registerRouter=require('./src/routes/registerRouter')(nav);
+const loginRouter=require('./src/routes/loginRouter')(nav);
 
 const app=express();
 

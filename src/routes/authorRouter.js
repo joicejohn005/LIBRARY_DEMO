@@ -1,5 +1,7 @@
 const express= require('express');
 const authorsRouter=express.Router();
+function router(nav)
+{
 var authors=[
     {
       place:'Vaikkam Muhammad Basheer',
@@ -34,8 +36,10 @@ var authors=[
     res.render("author",{
       nav,
       title:"Author",
-      head1:"Library_Authors",
+      head1:"Library_Author",
       author:authors[id]
-    })
-  })  
-  module.exports=authorsRouter; 
+    }) 
+  })
+ return authorsRouter; 
+}
+  module.exports=router; 
