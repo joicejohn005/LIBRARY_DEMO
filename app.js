@@ -1,5 +1,15 @@
 const express= require('express');
- 
+const nav=[
+  {
+    link:'/books',name:'Books'
+  },
+  {
+    link:'/authors',name:'Authors'
+  },  
+  {
+    link:'/login',name:'Login'
+  }
+];
 const booksRouter=require('./src/routes/bookRouter');
 const authorsRouter=require('./src/routes/authorRouter');
 const registerRouter=require('./src/routes/register');
@@ -21,9 +31,7 @@ app.use('/login',loginRouter)
 app.get('/', function(req,res){  //response corresponding to request
 res.render("index", //'index' is the page that wish to load.
 {
-  nav:[{link:'/books',name:'Books'},
-  {link:'/authors',name:'Authors'},
-  {link:'/login',name:'Login'}],
+  nav,
   title:"Library",
   head1:"Library"
 })
